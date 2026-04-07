@@ -1,6 +1,7 @@
 # Solano-post2-u3
 
 C1:
+Programa de suma: Se ensambla un programa que carga tres valores en AX, BX y CX y los acumula en AX mediante dos instrucciones ADD. El objetivo es observar cómo cambia AX en cada paso hasta obtener el resultado final 0x0012 (18 decimal)
 | Instrucción    | AX   | BX   | CX   | IP siguiente | ZF | CF | SF |
 |----------------|------|------|------|--------------|----|----|-----|
 | MOV AX, 000A   | 000A | 0000 | 0000 | 0103         | NZ | NC | PL |
@@ -12,7 +13,8 @@ C1:
 
 
 
-c2:
+C2:
+Programa con bucle LOOP: Se ensambla un programa que usa la instrucción LOOP para repetir una suma 4 veces. LOOP decrementa CX automáticamente y salta al inicio del bucle mientras CX != 0, acumulando 0x0002 en AX cada iteración hasta obtener 0x0008 (8 decimal)
 | Iteración | Instrucción  | AX después | CX después | IP siguiente | ¿LOOP salta? |
 |-----------|--------------|------------|------------|--------------|--------------|
 | -         | MOV CX, 0004 | 0000       | 0004       | 0106         | -            |
@@ -24,3 +26,8 @@ c2:
 | 3         | LOOP 0106    | 0006       | 0001       | 0106         | Si           |
 | 4         | ADD AX, 0002 | 0008       | 0001       | 0109         | -            |
 | 4         | LOOP 0106    | 0008       | 0000       | 010B         | No           |
+
+
+
+C3:
+Análisis del código máquina: Se usa el comando D para volcar los bytes del programa en memoria y analizar cómo cada instrucción se codifica en código máquina, identificando opcodes, operandos en little-endian y desplazamientos relativos de los saltos cortos del 8086.
